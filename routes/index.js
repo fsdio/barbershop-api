@@ -22,6 +22,10 @@ const Data = mongoose.model('barbershops', {
         type: String,
         require: true,
     },
+    statusBarbershop: {
+      type: Boolean,
+      require: true,
+    },
     typeUser: {
         type: String,
         require: true,
