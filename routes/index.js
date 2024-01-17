@@ -17,10 +17,12 @@ const Data = mongoose.model('barbershops', {
     namaBarbershop: {
         type: String,
         require: true,
+        unique: true,
     },
     namaPemilik: {
         type: String,
         require: true,
+        unique: true,
     },
     statusBarbershop: {
       type: Boolean,
@@ -46,6 +48,7 @@ const Data = mongoose.model('barbershops', {
     nomorTelepon: {
         type: String,
         required: true,
+        unique: true,
     },
     antrian: {
         type: Number,
@@ -86,6 +89,15 @@ router.post('/items', async (req, res) => {
 router.get('/items', async (req, res) => {
   try {
     const items = await Data.find();
+    res.send(items);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+router.get('/items/:id', async (req, res) => {
+  try {
+    const items = await Data.findById(req.params.id);
     res.send(items);
   } catch (error) {
     res.status(500).send(error);
