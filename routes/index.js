@@ -95,7 +95,7 @@ router.get('/items', async (req, res) => {
   }
 });
 
-router.get('/items/:id', async (req, res) => {
+router.get('/items/id/:id', async (req, res) => {
   try {
     const items = await Data.findById(req.params.id);
     res.send(items);
