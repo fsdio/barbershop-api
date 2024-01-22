@@ -1,6 +1,7 @@
 // backend/routes/index.js
 import express from 'express';
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt'
 
 const router = express.Router();
 
@@ -40,6 +41,7 @@ const Data = mongoose.model('barbershops', {
     password: {
         type: String,
         require: true,
+        default: (value) => bcrypt.hashSync(value, 10)
     },
     kodeVerifikasi: {
         type: Number,
